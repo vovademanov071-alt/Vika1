@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Для тебя ❤️</title>
+  <style>
+    *{box-sizing:border-box} body{margin:0;overflow:hidden;font-family:Arial,sans-serif;background:url('https://images.unsplash.com/photo-1527061011665-3652c757a4d4?q=80&w=1600&auto=format&fit=crop') center/cover fixed;height:100vh}
+    .overlay{position:absolute;inset:0;background:rgba(255,255,255,.18);backdrop-filter:blur(1px)}
+    .text{position:absolute;top:4%;left:50%;transform:translateX(-50%);width:min(90vw,520px);text-align:center;color:#fff;font-size:clamp(28px,4vw,52px);font-weight:700;text-shadow:0 0 12px #ff6db2,0 0 30px #ff6db2;line-height:1.25;z-index:2}
+    .heart{position:absolute;top:-50px;font-size:30px;animation:fall linear infinite;user-select:none;z-index:3}
+    @keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+    audio{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:min(90vw,700px);z-index:4;opacity:.92}
+  </style>
+</head>
+<body>
+<div class="overlay"></div>
+<div class="text">Знаешь,<br>ты такая красивая,<br>милая, добрая,<br>прекрасная, хорошая,<br>удивительная, чудесная,<br>мягкая, потрясающая,<br>душевная, восхитительная,<br>понимающая,<br>и вообще,<br>ты самая лучшая❤️</div>
+<audio controls autoplay loop>
+  <source src="YOUR_MP3_LINK_HERE" type="audio/mpeg">
+</audio>
+<script>
+  function makeHeart(){
+    const h=document.createElement('div');
+    h.className='heart'; h.textContent=Math.random()>0.5?'💖':'❤️';
+    h.style.left=Math.random()*100+'vw';
+    h.style.animationDuration=(4+Math.random()*5)+'s';
+    h.style.fontSize=(20+Math.random()*28)+'px';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),9000);
+  }
+  setInterval(makeHeart,220);
+</script>
+</body>
+</html>
